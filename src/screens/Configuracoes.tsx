@@ -1,6 +1,9 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 
-export default function Configuracoes() {
+export default function Configuracoes({ navigation }: any) {
+  function changeScreen(screenName: string) {
+    navigation.navigate(screenName);
+  }
   return (
     <View style={styles.container}>
       <Pressable style={styles.clicableCard}
@@ -12,7 +15,7 @@ export default function Configuracoes() {
       </Pressable>
 
       <Pressable style={styles.clicableCard}
-      onPress={() => navigation.navigate("ConfigLocalizacao")}>
+      onPress={changeScreen.bind(null, "ConfigLocalizacao")}>
         <Text style={styles.titleCard}>Localização</Text>
         <Text style={styles.descriptionCard}>
           Permitir compartilhamento, definir quem pode ver sua localização e
@@ -21,7 +24,7 @@ export default function Configuracoes() {
       </Pressable>
 
       <Pressable style={styles.clicableCard}
-      onPress={() => navigation.navigate("ConfigNotificacao")}>
+      onPress={changeScreen.bind(null, "ConfigNotificacao")}>
         <Text style={styles.titleCard}>Notificações</Text>
         <Text style={styles.descriptionCard}>
           Mensagens, solicitações de contato, alertas de chegada e avisos de localização.
@@ -29,7 +32,7 @@ export default function Configuracoes() {
       </Pressable>
       
       <Pressable style={styles.clicableCard}
-      onPress={() => navigation.navigate("ConfigPrivESeguranca")}>
+      onPress={changeScreen.bind(null, "ConfigPrivESeguranca")}>
         <Text style={styles.titleCard}>Privacidade e segurança</Text>
         <Text style={styles.descriptionCard}>
           Contatos bloqueados, permissões, sessões ativas e configurações de visibilidade.
@@ -37,7 +40,7 @@ export default function Configuracoes() {
       </Pressable>
 
       <Pressable style={styles.clicableCard}
-      onPress={() => navigation.navigate("ConfigAparencia")}>
+      onPress={changeScreen.bind(null, "ConfigAparencia")}>
         <Text style={styles.titleCard}>Aparência</Text>
         <Text style={styles.descriptionCard}>
           Tema escuro, claro ou seguir o tema do celular. 
@@ -45,7 +48,7 @@ export default function Configuracoes() {
       </Pressable>  
 
       <Pressable style={styles.clicableCard}
-      onPress={() => navigation.navigate("ConfigAjudaESuporte")}>
+      onPress={changeScreen.bind(null, "ConfigAjudaESuporte")}>
         <Text style={styles.titleCard}>Ajuda e suporte</Text>
         <Text style={styles.descriptionCard}>
           Perguntas frequentes, contato com suporte, termos de uso e política de privacidade.
