@@ -1,20 +1,88 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
+
+import PaginaInicial from "./src/screens/PaginaInicial";
+import Social from "./src/screens/Social";
+import Mapa from "./src/screens/Mapa";
+import Configuracoes from "./src/screens/Configuracoes";
+import Historico from "./src/screens/Historico";
+import AdicionarContato from "./src/screens/AdicionarContato";
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator
+        initialRouteName="Mapa"
+        screenOptions={{
+          headerShown: false,
+
+          tabBarActiveTintColor: "#8B7CFF",
+          tabBarInactiveTintColor: "#77738D",
+
+          tabBarHideOnKeyboard: true,
+
+          tabBarStyle: {
+            backgroundColor: "#17142B",
+            borderTopColor: "#292440",
+            height: 70,
+            paddingBottom: 10,
+            paddingTop: 8,
+          },
+        }}
+      >
+        <Tab.Screen
+          name="Inicio"
+          component={PaginaInicial}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="home-outline" size={size} color={color} />
+            ),
+          }}
+        />
+
+        <Tab.Screen
+          name="Social"
+          component={Social}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="chatbubbles-outline" size={size} color={color} />
+            ),
+          }}
+        />
+
+        <Tab.Screen
+          name="Mapa"
+          component={Mapa}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="map" size={size} color={color} />
+            ),
+          }}
+        />
+
+        <Tab.Screen
+          name="Historico"
+          component={Historico}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="reader-outline" size={size} color={color} />
+            ),
+          }}
+        />
+
+        <Tab.Screen
+          name="Configuracoes"
+          component={Configuracoes}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="settings-outline" size={size} color={color} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
