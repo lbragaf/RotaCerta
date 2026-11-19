@@ -1,12 +1,6 @@
-
+import React from "react";
 import { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  Pressable,
-} from "react-native";
+import { View, Text, StyleSheet, TextInput, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function AdicionarContato({ navigation }: any) {
@@ -58,18 +52,13 @@ export default function AdicionarContato({ navigation }: any) {
         </View>
 
         <Pressable
-          style={[
-            styles.searchButton,
-            !userId.trim() && styles.disabledButton,
-          ]}
+          style={[styles.searchButton, !userId.trim() && styles.disabledButton]}
           onPress={buscarUsuario}
           disabled={!userId.trim()}
         >
           <Ionicons name="search" size={20} color="#FFFFFF" />
 
-          <Text style={styles.searchButtonText}>
-            Buscar usuário
-          </Text>
+          <Text style={styles.searchButtonText}>Buscar usuário</Text>
         </Pressable>
       </View>
     </View>
